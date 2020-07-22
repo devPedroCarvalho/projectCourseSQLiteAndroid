@@ -13,6 +13,7 @@ public class DataBaseSql extends SQLiteOpenHelper {
     private static final String DB_TABLE = "Users_table";
     private static final String ID = "ID";
     private static final String NAME = "NAME";
+    private static final String UC = "UC";
 
     private static final String CREATE_TABLE = "CREATE TABLE " + DB_TABLE + " (" +
             ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
