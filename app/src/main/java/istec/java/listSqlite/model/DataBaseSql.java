@@ -42,6 +42,12 @@ public class DataBaseSql extends SQLiteOpenHelper {
         long result = db.insert(DB_TABLE,null, cValues);
         return result != -1;
     }
+    public void deleteItem(String category_id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(DB_TABLE, NAME + " = ?",
+                new String[] { String.valueOf(category_id) });
+        db.close();
+    }
 
 
     public Cursor ShowDataSql(){

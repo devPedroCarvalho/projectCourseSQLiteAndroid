@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
@@ -32,9 +34,26 @@ public class HomeActivity extends BaseClass {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         myListView = (ListView)findViewById(R.id.myListView);
+
         listData.clear();
         GetData();
 
+        myListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String positionItem = myListView.getItemAtPosition(position).toString();
+                deleteTitle(positionItem);
+            }
+        });
+
+    }
+
+    //deleteData
+    public void deleteTitle(String name)
+    {
+        DataBaseSql dataBase = new DataBaseSql(this);
+        dataBase.deleteItem(name);
+        goTo(HomeActivity.this,HomeActivity.class);
     }
 
     //geData
